@@ -1,4 +1,4 @@
-# StreamCore Lite Backend
+# StreamCore Backend
 
 A RESTful backend for a video-sharing platform built with Node.js, Express.js, and MongoDB. The project provides secure authentication, media management, subscription features, watch history tracking, and optimized data retrieval using MongoDB aggregation pipelines.
 
