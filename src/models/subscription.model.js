@@ -17,6 +17,7 @@ const subscriptionSchema = new Schema(
   },
   {
     timestamps: true,
+    versionKey: false,
   }
 );
 

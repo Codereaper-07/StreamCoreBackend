@@ -4,7 +4,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
-import { COOKIE_OPTIONS } from "../constants.js";
+import { COOKIE_OPTIONS, USER_SAFE_FIELDS } from "../constants.js";
 
 const generateAccessAndRefreshTokens = async (userId) => {
   const user = await User.findById(userId);
@@ -69,9 +69,7 @@ const registerUser = asyncHandler(async (req, res) => {
     coverImage: coverImage?.url || "",
   });
 
-  const createdUser = await User.findById(user._id).select(
-    "-password -refreshToken"
-  );
+  const createdUser = await User.findById(user._id).select(USER_SAFE_FIELDS);
 
   if (!createdUser) {
     throw new ApiError(500, "Something went wrong while registering the user");
@@ -107,9 +105,7 @@ const loginUser = asyncHandler(async (req, res) => {
     user._id
   );
 
-  const loggedInUser = await User.findById(user._id).select(
-    "-password -refreshToken"
-  );
+  const loggedInUser = await User.findById(user._id).select(USER_SAFE_FIELDS);
 
   const cookieOptions = {
     ...COOKIE_OPTIONS,

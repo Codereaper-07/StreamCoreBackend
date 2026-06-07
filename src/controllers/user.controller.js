@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { User } from "../models/user.model.js";
-import { Subscription } from "../models/subscription.model.js";
 import { ApiError } from "../utils/ApiError.js";
+import { USER_SAFE_FIELDS } from "../constants.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
@@ -22,7 +22,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
       },
     },
     { new: true }
-  ).select("-password -refreshToken");
+  ).select(USER_SAFE_FIELDS);
 
   return res
     .status(200)
@@ -50,7 +50,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
       },
     },
     { new: true }
-  ).select("-password -refreshToken");
+  ).select(USER_SAFE_FIELDS);
 
   return res
     .status(200)
@@ -78,7 +78,7 @@ const updateCoverImage = asyncHandler(async (req, res) => {
       },
     },
     { new: true }
-  ).select("-password -refreshToken");
+  ).select(USER_SAFE_FIELDS);
 
   return res
     .status(200)
