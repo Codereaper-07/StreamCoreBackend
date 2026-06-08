@@ -1,4 +1,3 @@
-export const DB_NAME = "streamcore-lite";
 
 export const COOKIE_OPTIONS = {
   httpOnly: true,
