@@ -8,6 +8,7 @@ import {
   getCurrentUser,
 } from "../controllers/auth.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
+import { loginLimiter } from "../middlewares/rateLimit.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
 
 const router = Router();
@@ -20,7 +21,7 @@ router.route("/register").post(
   registerUser
 );
 
-router.route("/login").post(loginUser);
+router.route("/login").post(loginLimiter, loginUser);
 router.route("/refresh-token").post(refreshAccessToken);
 
 router.route("/logout").post(verifyJWT, logoutUser);
