@@ -77,7 +77,17 @@ A RESTful backend for a video-sharing platform built with Node.js, Express.js, a
 
 ## Project Structure
 
-text src/ ├── controllers/ ├── db/ ├── middlewares/ ├── models/ ├── routes/ ├── utils/ ├── app.js ├── constants.js ├── env.js └── index.js 
+src/
+├── controllers/
+├── db/
+├── middlewares/
+├── models/
+├── routes/
+├── utils/
+├── app.js
+├── constants.js
+├── env.js
+└── index.js
 
 ---
 
